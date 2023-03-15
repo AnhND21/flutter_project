@@ -153,15 +153,51 @@ class HorizontalFoodList extends StatelessWidget {
           );
         },
         itemBuilder: (context, index) {
-          return ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            child: Container(
-              width: MediaQuery.of(context).size.width - 30,
-              child: Image.network(
-                'https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-03/plant-based-food-mc-220323-02-273c7b.jpg',
-                fit: BoxFit.cover,
+          return Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width - 30,
+                  child: Image.network(
+                    'https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-03/plant-based-food-mc-220323-02-273c7b.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              Positioned(
+                  width: MediaQuery.of(context).size.width - 30,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16)),
+                          gradient: LinearGradient(
+                            colors: [Colors.black12, Colors.black],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          )),
+                      alignment: Alignment.bottomLeft,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Salad',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                          Text(
+                            '10.233 photos',
+                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          ),
+                        ],
+                      )))
+            ],
           );
         },
       ),
