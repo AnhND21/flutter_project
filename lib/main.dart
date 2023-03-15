@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_application/auth/screens/login_screen.dart';
+import 'package:flutter_application/home/screens/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +14,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme:
-          ThemeData(primaryColor: Colors.white, fontFamily: 'SourceSerifPro'),
-      home: const HomePage(),
+      theme: ThemeData(
+        primaryColor: Colors.black,
+        fontFamily: 'Hind',
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }
@@ -205,9 +214,14 @@ class HorizontalFoodList extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -238,38 +252,44 @@ class HomePage extends StatelessWidget {
         automaticallyImplyLeading: true,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const HorizontalFoodList(),
-              Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.only(top: 16.0, bottom: 16.0),
-                  child: Row(children: [
-                    const Expanded(
-                        child: Text(
-                      'Sort by',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    )),
-                    Row(children: const [
-                      Text(
-                        'Most Popular',
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Icon(
-                        Icons.swap_vert_rounded,
-                        color: Colors.red,
-                      )
-                    ])
-                  ])),
-              const FoodList(),
-            ],
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await Future.delayed(const Duration(seconds: 1));
+          },
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const HorizontalFoodList(),
+                Container(
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+                    child: Row(children: [
+                      const Expanded(
+                          child: Text(
+                        'Sort by',
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      )),
+                      Row(children: const [
+                        Text(
+                          'Most Popular',
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Icon(
+                          Icons.swap_vert_rounded,
+                          color: Colors.red,
+                        )
+                      ])
+                    ])),
+                const FoodList(),
+              ],
+            ),
           ),
         ),
       ),
