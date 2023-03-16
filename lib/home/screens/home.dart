@@ -9,16 +9,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  late String _email;
   @override
   void initState() {
     super.initState();
-    _email = widget.email;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: AppBar(
@@ -27,41 +26,17 @@ class _HomeScreen extends State<HomeScreen> {
             backgroundColor: Colors
                 .white, // Set any color of status bar you want; or it defaults to your theme's primary color
           )),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: SingleChildScrollView(
-          physics: null,
-          child: ConstrainedBox(
-            constraints:
-                BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(
-                        top: 24,
-                      ),
-                      child: const Text(
-                        'Welcome Back, Boss 👋',
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.blue),
-                      ),
-                    ),
-                    const Text(
-                      'We happy to see you again. To use your account, you should log in first.',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
-                    ),
-                  ]),
-            ),
-          ),
+      body: SingleChildScrollView(
+        physics: null,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Container(child: Text('Home')),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.pinkAccent,
+        child: const Icon(Icons.add),
       ),
     );
   }

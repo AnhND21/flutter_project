@@ -87,6 +87,11 @@ flutter:
         - asset: fonts/Hind-Medium.ttf
         - asset: fonts/Hind-SemiBold.ttf
         - asset: fonts/Hind-Light.ttf
+    - family: DMSans
+      fonts:
+        - asset: fonts/DMSans-Bold.ttf
+        - asset: fonts/DMSans-Regular.ttf
+        - asset: fonts/DMSans-Medium.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
