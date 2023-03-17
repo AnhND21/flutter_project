@@ -6,7 +6,10 @@ import 'package:flutter_application/home/widgets/you_may_like_list.dart';
 
 class HomeScreen extends StatefulWidget {
   final String email = '';
-  const HomeScreen({super.key});
+  final Function callBack;
+
+  const HomeScreen({Key? key, required this.callBack}) : super(key: key);
+
   @override
   State<HomeScreen> createState() => _HomeScreen();
 }
@@ -77,6 +80,9 @@ class _HomeScreen extends State<HomeScreen> {
                         color: Color.fromARGB(100, 232, 232, 232),
                         borderRadius: BorderRadius.all(Radius.circular(32))),
                     child: InkWell(
+                      onTap: () {
+                        widget.callBack();
+                      },
                       child: Row(children: const [
                         Icon(
                           CupertinoIcons.search,
@@ -85,7 +91,7 @@ class _HomeScreen extends State<HomeScreen> {
                         SizedBox(
                           width: 4,
                         ),
-                        Text('Search anything...')
+                        Text('Search anything1111...')
                       ]),
                     ),
                   ),

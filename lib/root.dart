@@ -17,13 +17,14 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreen extends State<RootScreen> {
   int selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    ChatScreen(),
-    CartScreen(),
-    NotificationScreen(),
-    AccountScreen()
+    const ChatScreen(),
+    const CartScreen(),
+    const NotificationScreen(),
+    const AccountScreen()
   ];
+
   @override
   void initState() {
     super.initState();
