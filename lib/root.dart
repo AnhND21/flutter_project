@@ -48,7 +48,7 @@ class _RootScreen extends State<RootScreen> {
       onWillPop: () async => false,
       child: Scaffold(
         drawerEnableOpenDragGesture: true,
-        drawer: Drawer(
+        endDrawer: Drawer(
           child: SideBarMenu(callBack: navigatorToScreen, index: selectedIndex),
         ),
         appBar: PreferredSize(
