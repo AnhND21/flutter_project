@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/auth/screens/forgot_password_screen.dart';
 import 'package:flutter_application/auth/screens/login_screen.dart';
 import 'package:flutter_application/auth/screens/signup_screen.dart';
+import 'package:flutter_application/chat/screens/chat.dart';
+import 'package:flutter_application/notifications/screens/notifications.dart';
 import 'package:flutter_application/root.dart';
 
 void main() {
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => const SignUpScreen(),
         '/forgot_password': (context) => const ForgotPasswordScreen(),
         '/root': (context) => const RootScreen(),
+        '/chat': (context) => const ChatScreen(),
+        '/notification': (context) => const NotificationScreen(),
       },
     );
   }

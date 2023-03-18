@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/account/screens/account.dart';
 import 'package:flutter_application/cart/screens/cart.dart';
-import 'package:flutter_application/chat/screens/chat.dart';
 import 'package:flutter_application/components/widgets/sidebar_menu.dart';
 import 'package:flutter_application/home/screens/home.dart';
-import 'package:flutter_application/notifications/screens/notifications.dart';
+import 'package:flutter_application/news/screens/news.dart';
+import 'package:flutter_application/search/screens/search.dart';
 
 class RootScreen extends StatefulWidget {
   final String email = '';
@@ -16,12 +16,14 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreen extends State<RootScreen> {
-  int selectedIndex = 0;
+  int selectedIndex = 3;
   static final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    const ChatScreen(),
+    HomeScreen(
+      callBack: () {},
+    ),
+    const SearchScreen(),
     const CartScreen(),
-    const NotificationScreen(),
+    const NewsScreen(),
     const AccountScreen()
   ];
 
@@ -48,6 +50,7 @@ class _RootScreen extends State<RootScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+        backgroundColor: Colors.white,
         drawerEnableOpenDragGesture: true,
         endDrawer: Drawer(
           child: SideBarMenu(callBack: navigatorToScreen, index: selectedIndex),
@@ -64,25 +67,34 @@ class _RootScreen extends State<RootScreen> {
           child: _widgetOptions.elementAt(selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+          backgroundColor: Colors.white,
+          items: <BottomNavigationBarItem>[
+            const BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.search),
               label: 'Search',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.star),
               label: 'Favorite',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.news),
-              label: 'News',
+              label: 'Newsfeed',
             ),
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person),
+              icon: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                child: Image.network(
+                  'https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg',
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.cover,
+                ),
+              ),
               label: 'Account',
             ),
           ],

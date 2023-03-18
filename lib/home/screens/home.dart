@@ -91,7 +91,7 @@ class _HomeScreen extends State<HomeScreen> {
                         SizedBox(
                           width: 4,
                         ),
-                        Text('Search anything1111...')
+                        Text('Search anything...')
                       ]),
                     ),
                   ),
