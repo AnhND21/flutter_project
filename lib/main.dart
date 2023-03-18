@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/account/screens/main_profile.dart';
 import 'package:flutter_application/auth/screens/forgot_password_screen.dart';
 import 'package:flutter_application/auth/screens/login_screen.dart';
 import 'package:flutter_application/auth/screens/signup_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/root': (context) => const RootScreen(),
         '/chat': (context) => const ChatScreen(),
         '/notification': (context) => const NotificationScreen(),
+        '/main_profile': (context) => const MainProfileScreen(),
       },
     );
   }

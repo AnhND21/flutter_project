@@ -249,7 +249,10 @@ class SideBarMenu extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 24),
                 child: Container(
                   alignment: Alignment.bottomCenter,
-                  child: const Text('Version: 1.0'),
+                  child: const Text(
+                    'Version: 1.0',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             )

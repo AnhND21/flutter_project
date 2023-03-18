@@ -20,7 +20,7 @@ class _YouMayLikeListState extends State<YouMayLikeList> {
           children: [
             const Expanded(
                 child: Text(
-              'You may like',
+              'You might like',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             )),
             TextButton(

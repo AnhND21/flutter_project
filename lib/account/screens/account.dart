@@ -75,7 +75,9 @@ class _AccountScreenState extends State<AccountScreen> {
                   height: 32,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/main_profile');
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(

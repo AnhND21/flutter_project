@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/news/models/news.dart';
 import 'package:flutter_application/news/widgets/news_list.dart';
+import 'package:flutter_application/news/widgets/story_list.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NewsScreen extends StatefulWidget {
@@ -182,7 +182,7 @@ class _NewsScreenState extends State<NewsScreen> {
                   Container(
                     margin: const EdgeInsets.only(top: 16),
                     padding: const EdgeInsets.all(16),
-                    height: 100,
+                    height: 110,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -208,16 +208,16 @@ class _NewsScreenState extends State<NewsScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(16)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(16)),
                                     child: Image.network(
                                       'https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg',
                                       width: 32,
                                       height: 32,
                                       fit: BoxFit.cover,
                                     )),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text(
                                     'What is going on?',
                                     style: TextStyle(
@@ -228,27 +228,61 @@ class _NewsScreenState extends State<NewsScreen> {
                               ],
                             ),
                           ),
-                          Row(
-                            children: [
-                              InkWell(
-                                onTap: () {},
-                                child: const Icon(
-                                  CupertinoIcons.photo,
-                                  color: Colors.blueAccent,
+                          Container(
+                            margin: const EdgeInsets.only(top: 10.0),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.photo,
+                                          color: Colors.grey[300]),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 8.0, top: 2),
+                                        child: Text(
+                                          'Add photo',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 16,
-                              ),
-                              InkWell(
-                                onTap: () {},
-                                child: Icon(CupertinoIcons.camera,
-                                    color: Colors.green[300]),
-                              )
-                            ],
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.video_call,
+                                        color: Colors.grey[300],
+                                        size: 28,
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 8.0, top: 2),
+                                        child: Text(
+                                          'Add video',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           )
                         ]),
                   ),
+                  const StoryList(
+                      list: ['1', '2', '4', '5', '21', '321', '232']),
                   NewsFeedList(list: list)
                 ]),
           ),

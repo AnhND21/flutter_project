@@ -82,7 +82,7 @@ class _RootScreen extends State<RootScreen> {
               label: 'Favorite',
             ),
             const BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.news),
+              icon: Icon(CupertinoIcons.square_list),
               label: 'Newsfeed',
             ),
             BottomNavigationBarItem(
