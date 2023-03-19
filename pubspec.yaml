@@ -84,5 +84,9 @@ flutter:
         - asset: fonts/DMSans-Bold.ttf
         - asset: fonts/DMSans-Regular.ttf
         - asset: fonts/DMSans-Medium.ttf
+    - family: Fasthand
+      fonts:
+        - asset: fonts/Fasthand-Regular.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

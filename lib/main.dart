@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application/account/screens/main_profile.dart';
 import 'package:flutter_application/auth/screens/forgot_password_screen.dart';
 import 'package:flutter_application/auth/screens/login_screen.dart';
@@ -8,6 +9,10 @@ import 'package:flutter_application/notifications/screens/notifications.dart';
 import 'package:flutter_application/root.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // transparent status bar
+  ));
   runApp(const MyApp());
 }
 

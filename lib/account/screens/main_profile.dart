@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/account/widgets/friends_list.dart';
 import 'package:flutter_application/account/widgets/photo_list.dart';
 import 'package:flutter_application/account/widgets/profile_header.dart';
 import 'package:flutter_application/news/models/news.dart';
@@ -227,6 +228,9 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                           ),
                           const SizedBox(
                               child: PhotosList(list: ['1', '2', '4', '5'])),
+                          const SizedBox(
+                            child: FriendsList(),
+                          ),
                           SizedBox(
                             child: NewsFeedList(list: list),
                           )
