@@ -77,9 +77,20 @@ class _HomeScreen extends State<HomeScreen> {
                     Container(
                       padding: const EdgeInsets.all(16),
                       margin: const EdgeInsets.only(top: 12),
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(100, 232, 232, 232),
-                          borderRadius: BorderRadius.all(Radius.circular(32))),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(32)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 1,
+                            blurRadius: 30,
+                            offset: const Offset(
+                                1, 1), // changes position of shadow
+                          ),
+                        ],
+                      ),
                       child: InkWell(
                         onTap: () {
                           widget.callBack();
@@ -92,25 +103,23 @@ class _HomeScreen extends State<HomeScreen> {
                           SizedBox(
                             width: 4,
                           ),
-                          Text('Search anything...')
+                          Text('Search...')
                         ]),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 16),
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(16)),
-                        child: Image.network(
-                            'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text('Category',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
+                          )
+                        ],
                       ),
                     ),
-                    const CategoryList(),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    const YouMayLikeList(),
-                    const NewsList(),
                   ],
                 ),
               ),

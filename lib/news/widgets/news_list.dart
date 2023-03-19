@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_application/news/models/news.dart';
+import 'package:like_button/like_button.dart';
 
 class NewsFeedList extends StatefulWidget {
   List<News> list;
@@ -210,7 +211,18 @@ class _NewsFeedListState extends State<NewsFeedList> {
                               InkWell(
                                 child: Row(
                                   children: [
-                                    const Icon(CupertinoIcons.heart),
+                                    LikeButton(
+                                      size: 24,
+                                      likeBuilder: (isLiked) {
+                                        if (isLiked) {
+                                          return Icon(CupertinoIcons.heart_fill,
+                                              color: Colors.red.shade500);
+                                        } else {
+                                          return const Icon(
+                                              CupertinoIcons.heart);
+                                        }
+                                      },
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8.0),
                                       child: Text(widget.list[index].totalLike

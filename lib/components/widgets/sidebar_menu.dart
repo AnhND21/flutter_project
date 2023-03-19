@@ -1,10 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 
-class SideBarMenu extends StatelessWidget {
+class SideBarMenu extends StatefulWidget {
   SideBarMenu({Key? key, this.callBack, this.index = 0}) : super(key: key);
   final callBack;
   int index = 0;
+
+  @override
+  State<StatefulWidget> createState() {
+    return _SideBarMenuState();
+  }
+}
+
+class _SideBarMenuState extends State<SideBarMenu> {
+  SimpleHiddenDrawerController? controller;
+
+  @override
+  void didChangeDependencies() {
+    controller = SimpleHiddenDrawerController.of(context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +34,7 @@ class SideBarMenu extends StatelessWidget {
         child: Column(
           children: [
             InkWell(
-              onTap: () => callBack(4),
+              onTap: () => widget.callBack(4),
               child: Container(
                 margin: const EdgeInsets.only(top: kToolbarHeight * 1.2),
                 child: Padding(
@@ -77,12 +93,12 @@ class SideBarMenu extends StatelessWidget {
                       )),
                   Container(
                     decoration: BoxDecoration(
-                        color: index == 0 ? Colors.black12 : null,
+                        color: widget.index == 0 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
                         onPressed: () {
-                          callBack(0);
+                          widget.callBack(0);
                         },
                         child: Row(
                           children: const [
@@ -100,12 +116,12 @@ class SideBarMenu extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: index == 1 ? Colors.black12 : null,
+                        color: widget.index == 1 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
                         onPressed: () {
-                          callBack(1);
+                          widget.callBack(1);
                         },
                         child: Row(
                           children: const [
@@ -123,12 +139,12 @@ class SideBarMenu extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: index == 2 ? Colors.black12 : null,
+                        color: widget.index == 2 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
                         onPressed: () {
-                          callBack(2);
+                          widget.callBack(2);
                         },
                         child: Row(
                           children: const [
@@ -146,12 +162,12 @@ class SideBarMenu extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: index == 3 ? Colors.black12 : null,
+                        color: widget.index == 3 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
                         onPressed: () {
-                          callBack(3);
+                          widget.callBack(3);
                         },
                         child: Row(
                           children: const [
@@ -178,7 +194,7 @@ class SideBarMenu extends StatelessWidget {
                       )),
                   Container(
                     decoration: BoxDecoration(
-                        color: index == 3 ? Colors.black12 : null,
+                        color: widget.index == 3 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
@@ -202,7 +218,7 @@ class SideBarMenu extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: index == 3 ? Colors.black12 : null,
+                        color: widget.index == 3 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(

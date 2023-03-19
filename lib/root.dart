@@ -7,6 +7,8 @@ import 'package:flutter_application/components/widgets/sidebar_menu.dart';
 import 'package:flutter_application/home/screens/home.dart';
 import 'package:flutter_application/news/screens/news.dart';
 import 'package:flutter_application/search/screens/search.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 
 class RootScreen extends StatefulWidget {
   final String email = '';
@@ -26,11 +28,6 @@ class _RootScreen extends State<RootScreen> {
     const NewsScreen(),
     const AccountScreen()
   ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -52,9 +49,6 @@ class _RootScreen extends State<RootScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         drawerEnableOpenDragGesture: true,
-        endDrawer: Drawer(
-          child: SideBarMenu(callBack: navigatorToScreen, index: selectedIndex),
-        ),
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(0),
             child: AppBar(
@@ -63,45 +57,64 @@ class _RootScreen extends State<RootScreen> {
               backgroundColor: Colors
                   .white, // Set any color of status bar you want; or it defaults to your theme's primary color
             )),
-        body: Center(
-          child: _widgetOptions.elementAt(selectedIndex),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
-              label: 'Home',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.search),
-              label: 'Search',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.star),
-              label: 'Favorite',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.square_list),
-              label: 'Newsfeed',
-            ),
-            BottomNavigationBarItem(
-              icon: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-                child: Image.network(
-                  'https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg',
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              label: 'Account',
-            ),
-          ],
-          currentIndex: selectedIndex,
-          selectedItemColor: Colors.blue[600],
-          onTap: _onItemTapped,
-          unselectedItemColor: Colors.black54,
+        // body: HiddenDrawerMenu(
+        //   screens: _widgetOptions,
+        //   backgroundColorMenu: Colors.white,
+        //   disableAppBarDefault: true,
+        //   initPositionSelected: 0,
+        //   slidePercent: 70,
+        //   typeOpen: TypeOpen.FROM_RIGHT,
+        // ),
+        body: SimpleHiddenDrawer(
+            screenSelectedBuilder: (position, controller) {
+              return _widgetOptions.elementAt(selectedIndex);
+            },
+            menu: SideBarMenu(
+              callBack: navigatorToScreen,
+              index: selectedIndex,
+            )),
+        bottomNavigationBar: Container(
+          color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: GNav(
+                curve: Curves.bounceIn,
+                gap: 8,
+                backgroundColor: Colors.black,
+                color: Colors.white,
+                activeColor: Colors.white,
+                haptic: true,
+                tabBorderRadius: 32,
+                tabBackgroundColor: Colors.grey.withOpacity(0.3),
+                padding: const EdgeInsets.all(16),
+                onTabChange: (value) {
+                  setState(() {
+                    selectedIndex = value;
+                  });
+                },
+                tabs: const [
+                  GButton(
+                    icon: Icons.home,
+                    text: 'Home',
+                  ),
+                  GButton(
+                    icon: Icons.search,
+                    text: 'Search',
+                  ),
+                  GButton(
+                    icon: Icons.star,
+                    text: 'Faforite',
+                  ),
+                  GButton(
+                    icon: Icons.list_alt,
+                    text: 'News',
+                  ),
+                  GButton(
+                    icon: Icons.person_2_outlined,
+                    text: 'Profile',
+                  )
+                ]),
+          ),
         ),
       ),
     );
