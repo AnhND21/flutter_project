@@ -29,7 +29,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
-          color: Color(0xFF17203A),
+          color: Color(0xFFFFFFFF),
         ),
         child: Column(
           children: [
@@ -65,12 +65,12 @@ class _SideBarMenuState extends State<SideBarMenu> {
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.white),
+                                  color: Colors.black),
                             ),
                             Text(
                               'email@gmail.com',
                               style:
-                                  TextStyle(fontSize: 14, color: Colors.white),
+                                  TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           ],
                         ),
@@ -89,7 +89,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                       padding: EdgeInsets.only(bottom: 8),
                       child: Text(
                         'BROWSER',
-                        style: TextStyle(fontSize: 12, color: Colors.white),
+                        style: TextStyle(fontSize: 12, color: Colors.black),
                       )),
                   Container(
                     decoration: BoxDecoration(
@@ -102,13 +102,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         },
                         child: Row(
                           children: const [
-                            Icon(CupertinoIcons.home, color: Colors.white),
+                            Icon(CupertinoIcons.home, color: Colors.black),
                             Padding(
                               padding: EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 'Home',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.black),
                               ),
                             )
                           ],
@@ -125,13 +125,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         },
                         child: Row(
                           children: const [
-                            Icon(CupertinoIcons.search, color: Colors.white),
+                            Icon(CupertinoIcons.search, color: Colors.black),
                             Padding(
                               padding: EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 'Search',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.black),
                               ),
                             )
                           ],
@@ -148,13 +148,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         },
                         child: Row(
                           children: const [
-                            Icon(CupertinoIcons.star, color: Colors.white),
+                            Icon(CupertinoIcons.star, color: Colors.black),
                             Padding(
                               padding: EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 'Favorite',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.black),
                               ),
                             )
                           ],
@@ -171,13 +171,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         },
                         child: Row(
                           children: const [
-                            Icon(CupertinoIcons.news, color: Colors.white),
+                            Icon(CupertinoIcons.list_dash, color: Colors.black),
                             Padding(
                               padding: EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 'News',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.black),
                               ),
                             )
                           ],
@@ -190,7 +190,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                       padding: EdgeInsets.only(bottom: 8),
                       child: Text(
                         'OTHERS',
-                        style: TextStyle(fontSize: 12, color: Colors.white),
+                        style: TextStyle(fontSize: 12, color: Colors.black),
                       )),
                   Container(
                     decoration: BoxDecoration(
@@ -204,13 +204,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         child: Row(
                           children: const [
                             Icon(Icons.notifications_outlined,
-                                color: Colors.white),
+                                color: Colors.black),
                             Padding(
                               padding: EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 'Notifications',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.black),
                               ),
                             )
                           ],
@@ -227,13 +227,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         },
                         child: Row(
                           children: const [
-                            Icon(CupertinoIcons.settings, color: Colors.white),
+                            Icon(CupertinoIcons.settings, color: Colors.black),
                             Padding(
                               padding: EdgeInsets.only(left: 16, top: 2),
                               child: Text(
                                 'Settings',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.black),
                               ),
                             )
                           ],
@@ -245,13 +245,12 @@ class _SideBarMenuState extends State<SideBarMenu> {
                       },
                       child: Row(
                         children: const [
-                          Icon(Icons.logout_outlined, color: Colors.white),
+                          Icon(Icons.logout_outlined, color: Colors.red),
                           Padding(
                             padding: EdgeInsets.only(left: 16, top: 2),
                             child: Text(
                               'Logout',
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white),
+                              style: TextStyle(fontSize: 16, color: Colors.red),
                             ),
                           )
                         ],

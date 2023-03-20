@@ -23,7 +23,7 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         // Here we create one to set status bar color
         toolbarOpacity: 0, toolbarHeight: 0,
@@ -47,20 +47,6 @@ class _HomeScreen extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Welcome,',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            Text(
-                              'Thoa Ette',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            )
-                          ],
-                        ),
                         SizedBox(
                           width: 40,
                           height: 40,

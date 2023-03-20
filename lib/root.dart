@@ -66,6 +66,7 @@ class _RootScreen extends State<RootScreen> {
         //   typeOpen: TypeOpen.FROM_RIGHT,
         // ),
         body: SimpleHiddenDrawer(
+            slidePercent: 60,
             screenSelectedBuilder: (position, controller) {
               return _widgetOptions.elementAt(selectedIndex);
             },

@@ -111,6 +111,7 @@ class _NewsScreenState extends State<NewsScreen> {
       constraints: const BoxConstraints(minHeight: double.infinity),
       width: double.infinity,
       padding: const EdgeInsets.only(bottom: 16),
+      color: Colors.white,
       child: Column(
         children: [
           Container(
