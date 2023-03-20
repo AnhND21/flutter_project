@@ -18,7 +18,8 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreen extends State<RootScreen> {
-  int selectedIndex = 3;
+  int selectedIndex = 0;
+
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(
       callBack: () {},
@@ -36,7 +37,6 @@ class _RootScreen extends State<RootScreen> {
   }
 
   void navigatorToScreen(int index) {
-    Navigator.pop(context);
     setState(() {
       selectedIndex = index;
     });
@@ -66,6 +66,8 @@ class _RootScreen extends State<RootScreen> {
         //   typeOpen: TypeOpen.FROM_RIGHT,
         // ),
         body: SimpleHiddenDrawer(
+            enableCornerAnimation: true,
+            verticalScalePercent: 90,
             slidePercent: 60,
             screenSelectedBuilder: (position, controller) {
               return _widgetOptions.elementAt(selectedIndex);
@@ -79,6 +81,7 @@ class _RootScreen extends State<RootScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: GNav(
+                selectedIndex: selectedIndex,
                 curve: Curves.bounceIn,
                 gap: 8,
                 backgroundColor: Colors.black,

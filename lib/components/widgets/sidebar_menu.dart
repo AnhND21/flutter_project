@@ -22,6 +22,11 @@ class _SideBarMenuState extends State<SideBarMenu> {
     super.didChangeDependencies();
   }
 
+  void navigateToSreen(int index) {
+    widget.callBack(index);
+    controller!.toggle();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +39,9 @@ class _SideBarMenuState extends State<SideBarMenu> {
         child: Column(
           children: [
             InkWell(
-              onTap: () => widget.callBack(4),
+              onTap: () => navigateToSreen(4),
               child: Container(
-                margin: const EdgeInsets.only(top: kToolbarHeight * 1.2),
+                margin: const EdgeInsets.only(top: kToolbarHeight - 8),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8, bottom: 32),
                   child: Row(
@@ -93,13 +98,32 @@ class _SideBarMenuState extends State<SideBarMenu> {
                       )),
                   Container(
                     decoration: BoxDecoration(
+                        color: widget.index == 4 ? Colors.black12 : null,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8))),
+                    child: TextButton(
+                        onPressed: () => navigateToSreen(4),
+                        child: Row(
+                          children: const [
+                            Icon(CupertinoIcons.person, color: Colors.black),
+                            Padding(
+                              padding: EdgeInsets.only(left: 16, top: 2),
+                              child: Text(
+                                'Profile',
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                              ),
+                            )
+                          ],
+                        )),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
                         color: widget.index == 0 ? Colors.black12 : null,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
-                        onPressed: () {
-                          widget.callBack(0);
-                        },
+                        onPressed: () => navigateToSreen(0),
                         child: Row(
                           children: const [
                             Icon(CupertinoIcons.home, color: Colors.black),
@@ -120,9 +144,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
-                        onPressed: () {
-                          widget.callBack(1);
-                        },
+                        onPressed: () => navigateToSreen(1),
                         child: Row(
                           children: const [
                             Icon(CupertinoIcons.search, color: Colors.black),
@@ -143,9 +165,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
-                        onPressed: () {
-                          widget.callBack(2);
-                        },
+                        onPressed: () => navigateToSreen(2),
                         child: Row(
                           children: const [
                             Icon(CupertinoIcons.star, color: Colors.black),
@@ -166,9 +186,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
-                        onPressed: () {
-                          widget.callBack(3);
-                        },
+                        onPressed: () => navigateToSreen(3),
                         child: Row(
                           children: const [
                             Icon(CupertinoIcons.list_dash, color: Colors.black),
@@ -193,13 +211,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         style: TextStyle(fontSize: 12, color: Colors.black),
                       )),
                   Container(
-                    decoration: BoxDecoration(
-                        color: widget.index == 3 ? Colors.black12 : null,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8))),
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
                         onPressed: () {
-                          // callBack(3);
+                          Navigator.pushNamed(context, '/notification');
+                          controller!.toggle();
                         },
                         child: Row(
                           children: const [
@@ -217,10 +235,9 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         )),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        color: widget.index == 3 ? Colors.black12 : null,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8))),
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
                     child: TextButton(
                         onPressed: () {
                           // callBack(3);
@@ -261,12 +278,12 @@ class _SideBarMenuState extends State<SideBarMenu> {
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 24),
+                padding: const EdgeInsets.only(bottom: 24, left: 24),
                 child: Container(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.bottomLeft,
                   child: const Text(
                     'Version: 1.0',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
