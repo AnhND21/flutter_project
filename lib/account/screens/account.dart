@@ -21,7 +21,7 @@ class _AccountScreenState extends State<AccountScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.only(top: 16),
+                  margin: const EdgeInsets.only(top: kToolbarHeight * 1.2),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(16)),

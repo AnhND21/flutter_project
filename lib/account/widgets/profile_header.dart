@@ -13,6 +13,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Stack(
           alignment: Alignment.bottomLeft,
@@ -22,8 +23,10 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                   bottomLeft: Radius.circular(borderRadius),
                   bottomRight: Radius.circular(borderRadius)),
               child: Image.network(
-                'https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/327130620_1180796839246553_4016540026510189451_n.jpg?stp=dst-jpg_p640x640&_nc_cat=103&ccb=1-7&_nc_sid=e3f864&_nc_ohc=1ueAcpdXXe4AX-suwzV&_nc_ht=scontent-tpe1-1.xx&oh=00_AfDrDw9ZHZefJmEvbjnhexSWPqSKBzbutGgbPZV_ElPApw&oe=641B5C3A',
+                'https://bedental.vn/wp-content/uploads/2022/11/hot-girl.jpg',
                 fit: BoxFit.cover,
+                height: 262,
+                width: double.infinity,
               ),
             ),
             Container(

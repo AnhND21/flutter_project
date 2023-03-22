@@ -54,7 +54,7 @@ class _FriendsListState extends State<FriendsList> {
                             topLeft: Radius.circular(16),
                             topRight: Radius.circular(16)),
                         child: Image.network(
-                          'https://scontent-hkt1-1.xx.fbcdn.net/v/t39.30808-1/321655819_532547005274065_952766599584559321_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=2vFeVYlVfT0AX-CvKaz&_nc_ht=scontent-hkt1-1.xx&oh=00_AfDte3QpeXn_uox6RUwdBTnRlZLEDUigmRIXKJ80tA6zOQ&oe=641BEA9F',
+                          'https://icdn.dantri.com.vn/thumb_w/640/2021/02/27/diem-danh-7-guong-mat-hot-girl-xinh-dep-noi-bat-trong-thang-2-docx-1614441452345.jpeg',
                           fit: BoxFit.cover,
                           height: 120,
                           width: double.infinity,
