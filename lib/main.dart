@@ -7,6 +7,7 @@ import 'package:flutter_application/auth/screens/signup_screen.dart';
 import 'package:flutter_application/chat/screens/chat.dart';
 import 'package:flutter_application/notifications/screens/notifications.dart';
 import 'package:flutter_application/root.dart';
+import 'package:flutter_application/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const LoginScreen(),
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
         '/forgot_password': (context) => const ForgotPasswordScreen(),
         '/root': (context) => const RootScreen(),

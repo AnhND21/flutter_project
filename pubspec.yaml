@@ -59,6 +59,9 @@ flutter:
   assets:
     - assets/svgs/chat.svg
     - assets/svgs/bell.svg
+    - assets/images/boss.png
+    - assets/images/bg_splash.jpeg
+    - assets/images/bg_splash.avif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
