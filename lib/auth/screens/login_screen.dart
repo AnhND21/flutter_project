@@ -10,10 +10,25 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreen extends State<LoginScreen> {
   late String _email;
+  bool _isLoading = false;
   @override
   void initState() {
     super.initState();
     _email = widget.email;
+  }
+
+  Future<void> onSignIn() async {
+    setState(() {
+      _isLoading = true;
+    });
+    Future.delayed(
+        const Duration(seconds: 5),
+        () => {
+              setState(() {
+                _isLoading = false;
+                Navigator.pushNamed(context, '/root');
+              })
+            });
   }
 
   @override
@@ -31,7 +46,7 @@ class _LoginScreen extends State<LoginScreen> {
                 BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
             child: Container(
               height: MediaQuery.of(context).size.height,
-              // padding: const EdgeInsets.only(top: 64),
+              padding: const EdgeInsets.only(top: 64),
               decoration: const BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage('assets/images/bg.png'),
@@ -137,7 +152,7 @@ class _LoginScreen extends State<LoginScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/root');
+                          _email.isNotEmpty ? onSignIn() : {};
                         },
                         child: Container(
                             decoration: BoxDecoration(
@@ -158,13 +173,22 @@ class _LoginScreen extends State<LoginScreen> {
                             ),
                             alignment: Alignment.center,
                             height: 58,
-                            child: const Text(
-                              'Sign In',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
-                            )),
+                            child: _isLoading
+                                ? const SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : const Text(
+                                    'Sign In',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )),
                       ),
                       const SizedBox(
                         height: 40,

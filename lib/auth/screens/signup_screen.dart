@@ -190,7 +190,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            color: Colors.redAccent,
+                            color: Colors.cyan,
                             border: const Border(),
                             boxShadow: [
                               BoxShadow(

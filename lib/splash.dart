@@ -14,13 +14,15 @@ class SplashScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/bg.png'),
+          image: AssetImage('assets/images/bg_splash.avif'),
           fit: BoxFit.cover,
         )),
         child: Column(
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(32)),
+              borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(32),
+                  bottomRight: Radius.circular(32)),
               child: Image.asset('assets/images/splash.png',
                   fit: BoxFit.cover,
                   width: MediaQuery.of(context).size.width,
@@ -40,8 +42,7 @@ class SplashScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 16.0, horizontal: 32),
+                    padding: EdgeInsets.symmetric(horizontal: 32),
                     child: Text(
                       'Explore all the most exiting foods based on your interest.',
                       style: TextStyle(
@@ -54,7 +55,9 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              margin: const EdgeInsets.only(top: 32.0),
+              width: MediaQuery.of(context).size.width / 1.5,
+              height: 48,
               child: InkWell(
                 onTap: () => Navigator.pushNamed(context, '/login'),
                 child: Expanded(
