@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
+  final String email = '';
+  final String password = '';
+  final String cPassword = '';
+  final bool obscureTextPass = true;
+  final bool obscureTextCPass = true;
   const SignUpScreen({super.key});
 
   @override
@@ -8,38 +13,88 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  String email = '';
+  String password = '';
+  String cPassword = '';
+  bool obscureTextPass = true;
+  bool obscureTextCPass = true;
+  @override
+  void initState() {
+    super.initState();
+    email = widget.email;
+    password = widget.password;
+    cPassword = widget.cPassword;
+    obscureTextPass = widget.obscureTextPass;
+    obscureTextCPass = widget.obscureTextCPass;
+  }
+
+  void onObscurePassword() {
+    setState(() {});
+  }
+
+  void onChangeEmail(String text) {
+    setState(() {
+      email = text;
+    });
+  }
+
+  void onChangePassword(String text) {
+    setState(() {
+      password = text;
+    });
+  }
+
+  void onChangeConfirmPassword(String text) {
+    setState(() {
+      cPassword = text;
+    });
+  }
+
+  Future<Map<String, String>> onSignUp() async {
+    return <String, String>{
+      "email": email,
+      "password": password,
+      "cPassword": cPassword
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.black,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        automaticallyImplyLeading: true,
-      ),
       body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        height: MediaQuery.of(context).size.height,
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
           },
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: kToolbarHeight - 8,
+                ),
+                InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: const Icon(Icons.arrow_back),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
                 const Text(
-                  'Create an Account 🙌',
+                  'Create an Account 👋🏻',
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
-                      color: Colors.blue),
+                      color: Colors.black),
                 ),
                 const Text(
                   'Create an accoount so you can do anything you want in your application.',
@@ -52,9 +107,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       textInputAction: TextInputAction.next,
                       textAlignVertical: TextAlignVertical.center,
                       style: const TextStyle(fontWeight: FontWeight.w500),
+                      initialValue: email,
+                      onChanged: (value) => onChangeEmail(value),
                       decoration: const InputDecoration(
                         filled: true,
-                        fillColor: Color.fromARGB(255, 240, 244, 255),
+                        fillColor: Colors.white,
                         hintText: 'Email',
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 16, horizontal: 16), //Imp Line
@@ -69,36 +126,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 16,
                     ),
                     TextFormField(
+                      obscureText: true,
                       textInputAction: TextInputAction.next,
                       textAlignVertical: TextAlignVertical.center,
                       style: const TextStyle(fontWeight: FontWeight.w500),
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Color.fromARGB(255, 240, 244, 255),
-                        hintText: 'Full name',
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 16), //Imp Line
-                        isDense: true,
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(16))),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    TextFormField(
-                      textInputAction: TextInputAction.next,
-                      textAlignVertical: TextAlignVertical.center,
-                      style: const TextStyle(fontWeight: FontWeight.w500),
+                      initialValue: password,
+                      onChanged: (value) => onChangePassword(value),
                       decoration: const InputDecoration(
                         suffixIcon: Icon(
-                          Icons.remove_red_eye,
-                          color: Colors.blue,
+                          Icons.remove_red_eye_outlined,
+                          color: Colors.black38,
                         ),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 240, 244, 255),
+                        fillColor: Colors.white,
                         hintText: 'Password',
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 16, horizontal: 16), //Imp Line
@@ -119,14 +159,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       textInputAction: TextInputAction.next,
                       textAlignVertical: TextAlignVertical.center,
                       style: const TextStyle(fontWeight: FontWeight.w500),
-                      obscuringCharacter: "*",
+                      initialValue: cPassword,
+                      onChanged: (value) => onChangeConfirmPassword(value),
                       decoration: const InputDecoration(
                         suffixIcon: Icon(
-                          Icons.remove_red_eye,
-                          color: Colors.blue,
+                          Icons.remove_red_eye_outlined,
+                          color: Colors.black38,
                         ),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 240, 244, 255),
+                        fillColor: Colors.white,
                         hintText: 'Confirm password',
                         focusedErrorBorder: InputBorder.none,
                         contentPadding: EdgeInsets.symmetric(
@@ -142,111 +183,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 48,
                     ),
                     InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/root');
+                      onTap: () async {
+                        final response = await onSignUp();
+                        print(response);
                       },
                       child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            color: Colors.blue[600],
+                            color: Colors.redAccent,
                             border: const Border(),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 1,
+                                blurRadius: 30,
+                                offset: const Offset(
+                                    1, 1), // changes position of shadow
+                              ),
+                            ],
                           ),
                           alignment: Alignment.center,
                           height: 58,
                           child: const Text(
-                            'Sign up',
+                            'Continue',
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500),
+                                fontWeight: FontWeight.w600),
                           )),
                     ),
                     const SizedBox(
                       height: 60,
                     ),
-                    const Text(
-                      'Sign in with social',
-                      style: TextStyle(color: Colors.grey),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                            child: Container(
-                          margin: const EdgeInsets.only(right: 8),
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(16)),
-                              border: Border.all(
-                                  style: BorderStyle.solid,
-                                  width: 0.5,
-                                  color: Colors.blueAccent)),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  Icons.facebook,
-                                  color: Colors.blue,
-                                  size: 30,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 8),
-                                  child: Text(
-                                    'Facebook',
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                )
-                              ]),
-                        )),
-                        Expanded(
-                            child: Container(
-                          margin: const EdgeInsets.only(left: 8),
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(16)),
-                              border: Border.all(
-                                  style: BorderStyle.solid,
-                                  width: 0.5,
-                                  color: Colors.blueAccent)),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                  fit: BoxFit.cover,
-                                  width: 30,
-                                  height: 30,
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 8),
-                                  child: Text(
-                                    'Google',
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                )
-                              ]),
-                        )),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Don't have an account?"),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('Log in'))
-                        ],
-                      ),
-                    )
                   ]),
                 ),
               ],

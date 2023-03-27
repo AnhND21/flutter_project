@@ -60,9 +60,10 @@ class _PhotosListState extends State<PhotosList> {
                         child: Stack(
                           children: [
                             Image.network(
-                              'https://scontent-hkt1-1.xx.fbcdn.net/v/t39.30808-1/321655819_532547005274065_952766599584559321_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=2vFeVYlVfT0AX-CvKaz&_nc_ht=scontent-hkt1-1.xx&oh=00_AfDte3QpeXn_uox6RUwdBTnRlZLEDUigmRIXKJ80tA6zOQ&oe=641BEA9F',
+                              'https://i.vietgiaitri.com/2019/8/16/3-nu-than-the-he-moi-hot-nhat-hien-nay-tai-sac-ven-toan-nhung-jennie-blackpink-gay-chu-y-hon-tzuyu-va-nancy-vi-dieu-nay-5a8027.jpg',
                               fit: BoxFit.cover,
                               width: double.infinity,
+                              height: 132,
                             ),
                           ],
                         ));

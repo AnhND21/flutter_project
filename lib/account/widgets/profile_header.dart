@@ -22,8 +22,10 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                   bottomLeft: Radius.circular(borderRadius),
                   bottomRight: Radius.circular(borderRadius)),
               child: Image.network(
-                'https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/327130620_1180796839246553_4016540026510189451_n.jpg?stp=dst-jpg_p640x640&_nc_cat=103&ccb=1-7&_nc_sid=e3f864&_nc_ohc=1ueAcpdXXe4AX-suwzV&_nc_ht=scontent-tpe1-1.xx&oh=00_AfDrDw9ZHZefJmEvbjnhexSWPqSKBzbutGgbPZV_ElPApw&oe=641B5C3A',
+                'https://static2.yan.vn/YanThumbNews/2167221/202203/8809068e-8cd7-411a-9a4d-a1166ab6e1fb.jpg',
                 fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width,
+                height: 232,
               ),
             ),
             Container(

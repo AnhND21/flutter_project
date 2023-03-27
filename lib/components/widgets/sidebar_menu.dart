@@ -258,7 +258,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                   ),
                   TextButton(
                       onPressed: () {
-                        Navigator.restorablePopAndPushNamed(context, '/');
+                        Navigator.restorablePopAndPushNamed(context, '/login');
                       },
                       child: Row(
                         children: const [

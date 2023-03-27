@@ -26,26 +26,26 @@ class _LoginScreen extends State<LoginScreen> {
           onTap: () {
             FocusScope.of(context).unfocus();
           },
-          child: SingleChildScrollView(
-            physics: null,
-            child: ConstrainedBox(
-              constraints:
-                  BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-              child: Container(
-                padding: const EdgeInsets.only(top: 64),
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage('assets/images/bg_splash.jpeg'),
-                  fit: BoxFit.cover,
-                )),
+          child: ConstrainedBox(
+            constraints:
+                BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              // padding: const EdgeInsets.only(top: 64),
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/images/bg.png'),
+                fit: BoxFit.cover,
+              )),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
                         margin: const EdgeInsets.only(
-                          top: 24,
+                          top: 48,
                         ),
                         child: const Text(
                           'Hello Again, Boss 👋',
@@ -66,7 +66,7 @@ class _LoginScreen extends State<LoginScreen> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 60),
+                        margin: const EdgeInsets.only(top: 40),
                         child: Column(children: [
                           TextFormField(
                             textInputAction: TextInputAction.next,
@@ -100,7 +100,7 @@ class _LoginScreen extends State<LoginScreen> {
                             textInputAction: TextInputAction.next,
                             textAlignVertical: TextAlignVertical.center,
                             style: const TextStyle(fontWeight: FontWeight.w500),
-                            obscuringCharacter: "*",
+                            // obscuringCharacter: "*",
                             decoration: const InputDecoration(
                               suffixIcon: Icon(
                                 Icons.remove_red_eye,
@@ -146,7 +146,7 @@ class _LoginScreen extends State<LoginScreen> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
                               color: _email.isNotEmpty
-                                  ? Colors.black87
+                                  ? Colors.cyan
                                   : Colors.black12,
                               border: const Border(),
                               boxShadow: [
@@ -164,82 +164,132 @@ class _LoginScreen extends State<LoginScreen> {
                             child: const Text(
                               'Sign In',
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500),
+                                  fontWeight: FontWeight.w600),
                             )),
                       ),
                       const SizedBox(
-                        height: 60,
+                        height: 40,
                       ),
-                      const Text(
-                        'Sign in with social',
-                        style: TextStyle(color: Colors.grey),
-                        textAlign: TextAlign.center,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 64,
+                            height: 1,
+                            decoration:
+                                const BoxDecoration(color: Colors.black),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            child: Text(
+                              'Or continue with',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            width: 64,
+                            height: 1,
+                            decoration: const BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                    bottom: Radius.circular(16))),
+                          ),
+                        ],
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Container(
-                            margin: const EdgeInsets.only(right: 8),
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(16)),
-                                border: Border.all(
-                                    style: BorderStyle.solid,
-                                    width: 0.5,
-                                    color: Colors.blueAccent)),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Icon(
-                                    Icons.facebook,
-                                    color: Colors.blue,
-                                    size: 30,
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                        ),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/google.png',
+                                fit: BoxFit.cover,
+                                width: 30,
+                                height: 30,
+                              ),
+                              const Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 16.0),
+                                  child: Text(
+                                    'Sign in with Google',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w600),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 8),
-                                    child: Text(
-                                      'Facebook',
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  )
-                                ]),
-                          )),
-                          Expanded(
-                              child: Container(
-                            margin: const EdgeInsets.only(left: 8),
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(16)),
-                                border: Border.all(
-                                    style: BorderStyle.solid,
-                                    width: 0.5,
-                                    color: Colors.blueAccent)),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.network(
-                                    'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                    fit: BoxFit.cover,
-                                    width: 30,
-                                    height: 30,
+                                ),
+                              ),
+                            ]),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
+                          color: Colors.blueAccent,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                        ),
+                        child: Row(
+                          children: [
+                            Image.asset('assets/images/facebook.png',
+                                fit: BoxFit.contain, width: 30, height: 30),
+                            const Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 16.0),
+                                child: Text(
+                                  'Sign in with Facebook',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                        ),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/apple.png',
+                                fit: BoxFit.cover,
+                                width: 30,
+                                height: 30,
+                                color: Colors.white,
+                              ),
+                              const Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 16.0),
+                                  child: Text(
+                                    'Sign in with Apple',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 8),
-                                    child: Text(
-                                      'Google',
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  )
-                                ]),
-                          )),
-                        ],
+                                ),
+                              ),
+                            ]),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 16),

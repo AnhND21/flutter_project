@@ -150,7 +150,7 @@ class _HomeScreen extends State<HomeScreen> {
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 0.1,
                       shrinkWrap: true,
-                      childAspectRatio: 1,
+                      childAspectRatio: 0.9,
                       children: List.generate(listMenu.length, (index) {
                         return listMenu.elementAt(index);
                       }),
@@ -160,6 +160,13 @@ class _HomeScreen extends State<HomeScreen> {
               ),
             ),
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        onPressed: () {},
+        child: Icon(
+          Icons.support_agent,
         ),
       ),
     );
