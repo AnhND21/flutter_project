@@ -44,9 +44,6 @@ class _LoginScreen extends State<LoginScreen> {
                   child: Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(
-                          top: 48,
-                        ),
                         child: const Text(
                           'Hello Again, Boss 👋',
                           style: TextStyle(
